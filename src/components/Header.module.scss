@@ -1,0 +1,21 @@
+.header {
+    @apply relative hover:border-t-4 border-green-500 border-opacity-60 transition-all bg-stone-900 bg-opacity-70 hover:bg-opacity-100;
+
+    ul {
+        @apply flex;
+        
+    }
+
+    .wrapper {
+        @apply flex top-0 w-auto items-center  border-green-500 border-opacity-0 transition-all;
+    }
+
+    .logo {
+        @apply text-3xl text-green-500 px-10;
+    }
+
+    .header__item {
+        @apply whitespace-nowrap text-lg text-white py-5 px-10 hover:bg-opacity-60 hover:bg-green-500 transition-all cursor-pointer;
+    }
+
+}

@@ -4,13 +4,15 @@ import Slider from "./Slider";
 import Header from "./Header";
 import ItemList from "./ItemList";
 import ItemPage from "./ItemPage";
+import Footer from "./Footer";
 
 const App = () => {
     return (
-        <div className="container">
+        <div className="">
             <Header />
             <ItemPage />
             {/* <ItemList/> */}
+        <Footer/>
         </div>
     );
 };

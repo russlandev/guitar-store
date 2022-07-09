@@ -1,0 +1,75 @@
+
+.itempage__wrapper {
+    @apply overflow-hidden w-screen mb-7;
+    .item__main {
+        @apply flex flex-wrap justify-center mb-20 pb-10 border-b-2 border-opacity-20 border-stone-300;
+
+        .item__slider {
+            @apply mx-10;
+        }
+
+        .item__details {
+            @apply mx-10 max-w-2xl mt-8;
+
+            .item__title {
+                @apply text-4xl tracking-widest font-thin text-stone-300 mb-8;
+            }
+
+            .item__tag {
+                @apply inline-block capitalize mr-2 my-1 bg-neutral-800 bg-opacity-60 px-4 py-1 rounded-full hover:bg-green-800 transition-all;
+            }
+
+            .item__descr {
+                @apply text-base font-light tracking-wide text-neutral-300 mt-8;
+            }
+
+            .item__actions {
+                .item__price {
+                    @apply flex w-full items-center mt-10 mb-8;
+                    h2 {
+                        @apply text-3xl tracking-widest font-thin text-stone-300;
+                    }
+                    div {
+                        @apply ml-32;
+                    }
+                }
+                button {
+                    @apply flex flex-nowrap whitespace-nowrap justify-between bg-green-700 bg-opacity-70 w-80 px-8 py-3 text-2xl tracking-widest font-thin hover:ml-2 transition-all hover:bg-opacity-100;
+                }
+            }
+        }
+    }
+
+    .item__specs {
+        @apply flex flex-wrap justify-center pb-20 border-b-2 border-opacity-20 border-stone-300;
+
+        div {
+            @apply max-w-sm mx-10 text-stone-300 my-5;
+            h4 {
+                @apply uppercase text-xl font-thin tracking-widest mb-2 pb-2 border-b-2 border-stone-700;
+            }
+            ul {
+                @apply list-disc ml-[18px] font-light;
+            }
+        }
+    }
+
+    .item__size {
+        @apply flex flex-wrap justify-start py-10 items-center;
+
+        img {
+            @apply opacity-80 px-10;
+        }
+
+        ul {
+            @apply list-decimal ml-[18px] font-light leading-8 text-stone-300 my-10;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .item__size {
+        justify-content: center !important;
+
+    }
+}

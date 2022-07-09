@@ -1,0 +1,49 @@
+.item {
+    @apply w-80 p-2 select-none;
+
+    .item__card {
+        a {
+            img {
+                @apply mb-4;
+            }
+            div {
+                @apply text-lg tracking-wide mt-2 pt-2 border-t-2 border-transparent;
+            }
+        }
+
+        .item__instock {
+            @apply uppercase text-sm tracking-wide font-light my-3;
+        }
+
+        .item__soldout {
+            @apply uppercase text-stone-400 text-sm tracking-wide font-light my-3;
+        }
+    }
+
+    .item__tocart {
+        @apply flex justify-between items-center;
+
+        div {
+            @apply font-thin tracking-wide;
+        }
+
+        button {
+            @apply tracking-wide px-6 py-3 transition-all hover:bg-green-700 bg-opacity-5 hover:mr-2 border-b-2 border-transparent;
+        }
+    }
+
+    .item__tocart:hover {
+        button {
+            @apply border-green-500 hover:border-transparent;
+        }
+    }
+
+    .item__card:hover {
+        a img {
+            @apply bg-green-900 bg-opacity-50 transition-all;
+        }
+        a div {
+            @apply border-green-500 transition-all;
+        }
+    }
+}

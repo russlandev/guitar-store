@@ -1,7 +1,7 @@
 .header {
-    @apply relative hover:border-t-4 border-green-500 border-opacity-60 transition-all bg-stone-900 bg-opacity-70 hover:bg-opacity-100;
+    @apply relative hover:border-t-4 border-green-500 border-opacity-60 transition-all bg-stone-900 bg-opacity-70 hover:bg-opacity-100 select-none;
 
-    ul {
+    menu {
         @apply flex items-center;
     }
 
@@ -15,8 +15,13 @@
 
     .header__item {
         @apply whitespace-nowrap text-lg text-white py-5 px-10 hover:bg-opacity-60 hover:bg-green-500 transition-all cursor-pointer;
-        a i {
-            @apply text-2xl;
+        .active {
+            @apply bg-green-900 hover:bg-green-800;
+        }
+        a {
+            i {
+                @apply text-2xl;
+            }
         }
     }
 }
@@ -33,6 +38,9 @@
         i {
             transform: translate(2.5px, -3px);
         }
+        span {
+            @apply text-lg;
+        }
     }
 
     .btn__open {
@@ -48,6 +56,8 @@
     }
 }
 
+
+
 .menu__open {
     transform: translateX(0);
 }
@@ -56,9 +66,9 @@
 }
 
 .menu__list {
-    @apply w-screen transition-all duration-500;
+    @apply w-screen transition-all duration-500 select-none;
 
-    .menu__item {
+    .menu__item div {
         @apply bg-stone-900 bg-opacity-90 whitespace-nowrap text-lg text-white py-5 hover:bg-opacity-80 hover:bg-green-500 cursor-pointer text-center m-1 border-b-2 border-transparent z-50;
     }
 }

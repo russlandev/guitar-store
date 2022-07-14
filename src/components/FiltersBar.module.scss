@@ -1,0 +1,8 @@
+.filter__wrapper {
+    @apply flex justify-start flex-wrap mt-16 py-5 border-b-2 border-stone-900 mx-5 sm:mx-10 md:mx-20;
+
+    
+}
+.filter__item {
+    @apply inline-block capitalize mr-3 my-1 bg-opacity-60 px-4 py-1 rounded-full transition-all cursor-pointer select-none whitespace-nowrap;
+}

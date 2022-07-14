@@ -1,5 +1,5 @@
 .item {
-    @apply w-80 p-2 select-none;
+    @apply w-80 p-2 my-5 select-none text-stone-300 ;
 
     .item__card {
         a {
@@ -12,7 +12,7 @@
         }
 
         .item__instock {
-            @apply uppercase text-sm tracking-wide font-light my-3;
+            @apply uppercase text-green-500 text-sm tracking-wide font-light my-3;
         }
 
         .item__soldout {
@@ -28,19 +28,22 @@
         }
 
         button {
-            @apply tracking-wide px-6 py-3 transition-all hover:bg-green-700 bg-opacity-5 hover:mr-2 border-b-2 border-transparent;
+            i {
+                @apply hidden;
+            }
+            @apply tracking-wide px-6 py-3 transition-all hover:bg-green-700 bg-opacity-5 border-b-2 border-transparent border-r-black disabled:bg-green-700;
         }
     }
 
     .item__tocart:hover {
         button {
-            @apply border-green-500 hover:border-transparent;
+            @apply border-b-green-500 hover:border-black disabled:hover:border-b-green-700 hover:border-r-4 disabled:hover:border-r-0 disabled:border-black;
         }
     }
 
     .item__card:hover {
         a img {
-            @apply bg-green-900 bg-opacity-50 transition-all;
+            @apply bg-green-900 bg-opacity-30 transition-all;
         }
         a div {
             @apply border-green-500 transition-all;

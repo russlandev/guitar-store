@@ -1,6 +1,6 @@
 
 .itempage__wrapper {
-    @apply overflow-hidden w-screen mb-7;
+    @apply overflow-hidden w-screen mb-7 min-h-screen;
     .item__main {
         @apply flex flex-wrap justify-center mb-20 pb-10 border-b-2 border-opacity-20 border-stone-300;
 
@@ -9,7 +9,7 @@
         }
 
         .item__details {
-            @apply mx-10 max-w-2xl mt-8;
+            @apply mx-10 xl:max-w-2xl mt-8;
 
             .item__title {
                 @apply text-4xl tracking-widest font-thin text-stone-300 mb-8;
@@ -20,7 +20,7 @@
             }
 
             .item__descr {
-                @apply text-base font-light tracking-wide text-neutral-300 mt-8;
+                @apply text-base font-light tracking-wide text-neutral-300 mt-8 ;
             }
 
             .item__actions {
@@ -34,7 +34,7 @@
                     }
                 }
                 button {
-                    @apply flex flex-nowrap whitespace-nowrap justify-between bg-green-700 bg-opacity-70 w-80 px-8 py-3 text-2xl tracking-widest font-thin hover:ml-2 transition-all hover:bg-opacity-100;
+                    @apply flex flex-nowrap whitespace-nowrap justify-between bg-green-700 bg-opacity-70 w-80 px-8 py-3 text-2xl tracking-widest font-thin hover:border-l-8 hover:w-[328px] border-black transition-all hover:bg-opacity-100 disabled:hover:border-l-0 disabled:hover:w-80 disabled:bg-opacity-100;
                 }
             }
         }
@@ -46,7 +46,7 @@
         div {
             @apply max-w-sm mx-10 text-stone-300 my-5;
             h4 {
-                @apply uppercase text-xl font-thin tracking-widest mb-2 pb-2 border-b-2 border-stone-700;
+                @apply uppercase text-xl w-[384px] md:w-auto font-thin tracking-widest mb-2 pb-2 border-b-2 border-stone-700;
             }
             ul {
                 @apply list-disc ml-[18px] font-light;

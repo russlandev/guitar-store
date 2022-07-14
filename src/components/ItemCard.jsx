@@ -1,14 +1,17 @@
 import React from "react";
+import { Link, useParams } from 'react-router-dom';
 import styles from "./ItemCard.module.scss";
+import ToCartButton from "./ToCartButton";
 
 const ItemCard = ({guitar}) => {
+    const {category} = useParams();
     return (
         <div className={styles.item}>
         <div className={styles.item__card}>
-            <a href="#" className={styles.item__img}>
+            <Link to={`/list/${category}/item/${guitar.id}`} className={styles.item__img}>
                 <img src={guitar.img[0]} alt="img" />
                 <div>{guitar.name}</div>
-            </a>
+            </Link>
             <div
                 className={
                     guitar.inStock ? styles.item__instock : styles.item__soldout
@@ -19,7 +22,8 @@ const ItemCard = ({guitar}) => {
         </div>
             <div className={styles.item__tocart}>
                 <div>${guitar.price}</div>
-                <button>{guitar.inStock ? 'TO CART' : 'PRE-ORDER'}</button>
+                <ToCartButton item={guitar}/>
+                {/* <button>{guitar.inStock ? 'TO CART' : 'PRE-ORDER'}</button> */}
             </div>
         </div>
     );

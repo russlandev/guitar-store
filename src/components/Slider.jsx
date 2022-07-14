@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { guitars } from "../data/mockedData";
 
-const Slider = ({ guitar, sliderWidth }) => {
+const Slider = ({ images, sliderWidth, sidePanel }) => {
     const [translate, setTranslate] = useState(0);
     const [selectedSlide, setSelectedSlide] = useState(0);
     const [width, setWidth] = useState(sliderWidth);
@@ -13,7 +12,7 @@ const Slider = ({ guitar, sliderWidth }) => {
     }, [sliderWidth])
 
     const nextSlide = () => {
-        const offsetWidth = width * (guitar.img.length - 1);
+        const offsetWidth = width * (images.length - 1);
         if (translate < offsetWidth) {
             setTranslate(translate + width);
             setSelectedSlide(selectedSlide + 1);
@@ -24,13 +23,13 @@ const Slider = ({ guitar, sliderWidth }) => {
     };
 
     const prevSlide = () => {
-        const offsetWidth = width * (guitar.img.length - 1);
+        const offsetWidth = width * (images.length - 1);
         if (translate > 0) {
             setTranslate(translate - width);
             setSelectedSlide(selectedSlide - 1);
         } else {
             setTranslate(offsetWidth);
-            setSelectedSlide(guitar.img.length - 1);
+            setSelectedSlide(images.length - 1);
         }
     };
 
@@ -52,7 +51,7 @@ const Slider = ({ guitar, sliderWidth }) => {
                     }`,
                 }}
             >
-                {guitar.img.map((img, i) => {
+                {sidePanel && images.map((img, i) => {
                     return (
                         <img
                             onClick={(e) => selectSlide(i)}
@@ -82,8 +81,8 @@ const Slider = ({ guitar, sliderWidth }) => {
                     style={{ transform: `translateX(-${translate}px)` }}
                     className={`flex  transition-all duration-500`}
                 >
-                    {guitar.img.map((img) => {
-                        return <img style={{width: `${width}px`}} key={img} src={img} />;
+                    {images.map((img) => {
+                        return <img alt="img" style={{width: `${width}px`}} key={img} src={img} />;
                     })}
                 </div>
             </div>

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getData, tagSearch } from "../redux/actions/getDataActions";
-import ItemCard from "./ItemCard";
+import { getData, tagSearch } from "../../redux/actions/getDataActions";
+import ItemCard from "../ItemCard/ItemCard";
 import FiltersBar from "./FiltersBar";
-import Loader from "./Loader";
-import Error from "./Error";
+import Loader from "../HelperComponents/Loader";
+import Error from "../HelperComponents/Error";
 
 const ItemList = () => {
     const itemsToRender = useSelector((store) => store.itemList.itemsToRender);
@@ -15,7 +15,6 @@ const ItemList = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        window.scrollTo(0, 0);
         if (category && tag) {
             dispatch(tagSearch({ category, tag }));
         } else if (category) {

@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux/es/exports";
-import { NavLink, Link } from "react-router-dom";
-import { getCartFromLocalStorage } from "../redux/reducers/cartSlice";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import { getCartFromLocalStorage } from "../../redux/reducers/cartSlice";
+import { login } from "../../redux/actions/authActions";
 import styles from "./Header.module.scss";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
     const cart = useSelector((store) => store.cart.cartItems);
+    const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
+    const location = useLocation();
 
     useEffect(() => {
+        // Signing-in user if he clicked 'remember me' or refreshed the page during one session
+        if (JSON.parse(localStorage.getItem("user"))) {
+            dispatch(login(JSON.parse(localStorage.getItem("user"))));
+        } else if (JSON.parse(sessionStorage.getItem("user"))) {
+            dispatch(login(JSON.parse(sessionStorage.getItem("user"))));
+        }
         // Taking cart from localStorage if we have it
         if (JSON.parse(localStorage.getItem("cart")).length) {
             dispatch(
@@ -19,6 +28,10 @@ const Header = () => {
             );
         }
     }, [dispatch]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
 
     return (
         <header className="mb-20">
@@ -53,10 +66,10 @@ const Header = () => {
                         </menu>
                         <menu className="right-0 absolute mr-8">
                             <NavLink
-                                to="sign-in"
+                                to="user-account"
                                 className={styles.header__item}
                             >
-                                <div>SIGN IN</div>
+                                <div>{user.id ? "MY ACCOUNT" : "SIGN IN"}</div>
                             </NavLink>
                             <NavLink to="cart" className={styles.header__item}>
                                 <div>

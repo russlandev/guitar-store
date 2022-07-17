@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux/es/exports";
-import { addItemToCart } from "../redux/reducers/cartSlice";
-import Slider from "./Slider";
-import ToCartButton from "./ToCartButton";
+import { addItemToCart } from "../../redux/reducers/cartSlice";
+import Slider from "../HelperComponents/Slider";
+import ToCartButton from "../HelperComponents/ToCartButton";
 import styles from "./ItemPage.module.scss";
 
 const ItemPage = () => {
@@ -23,7 +23,6 @@ const ItemPage = () => {
 
     useEffect(() => {
         getItem();
-        window.scrollTo(0, 0);
     }, [id]);
 
     return (

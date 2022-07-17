@@ -4,7 +4,7 @@ import {
     inStockFilter,
     stringsFilter,
     priceSort,
-} from "../redux/reducers/itemListSlice";
+} from "../../redux/reducers/itemListSlice";
 import styles from "./FiltersBar.module.scss";
 
 const FiltersBar = ({category}) => {

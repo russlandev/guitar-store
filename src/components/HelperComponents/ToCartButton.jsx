@@ -1,12 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux/es/exports";
-import { addItemToCart } from "../redux/reducers/cartSlice";
+import { addItemToCart } from "../../redux/reducers/cartSlice";
 
 const ToCartButton = ({ item }) => {
     const dispatch = useDispatch();
     const cart = useSelector((store) => store.cart.cartItems);
-    // console.log(item.inStock)
-    // console.log(cart.find((cartItem) => cartItem.id === item.id))
 
     return item.inStock ? (
         <button
@@ -29,12 +27,7 @@ const ToCartButton = ({ item }) => {
             <i className="cart arrow down icon"></i>
         </button>
     ) : (
-        <button
-        // disabled={cart.find((cartItem) => cartItem.id === item.id)}
-        // onClick={() => dispatch(addItemToCart({ item: item.name }))}
-        >
-            PRE-ORDER
-        </button>
+        <button disabled className="!bg-stone-800 hover:!border-stone-800">SOLD OUT</button>
     );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from 'react-router-dom';
 import styles from "./ItemCard.module.scss";
-import ToCartButton from "./ToCartButton";
+import ToCartButton from "../HelperComponents/ToCartButton";
 
 const ItemCard = ({guitar}) => {
     const {category} = useParams();

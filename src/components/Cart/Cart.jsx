@@ -2,15 +2,11 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.scss";
-import { amountChange, removeItemFromCart } from "../redux/reducers/cartSlice";
+import { amountChange, removeItemFromCart } from "../../redux/reducers/cartSlice";
 
 const Cart = () => {
     const cart = useSelector((store) => store.cart.cartItems);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     const calculateTotalPrice = () => {
         let totalPrice = 0;

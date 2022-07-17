@@ -13,9 +13,9 @@
         }
 
         .item__details {
-            @apply flex h-fit;
+            @apply flex h-fit text-stone-300;
             .item__name {
-                @apply text-base sm:text-xl md:text-2xl tracking-widest font-thin text-stone-300 my-4 hover:text-stone-100;
+                @apply text-base sm:text-xl md:text-2xl tracking-widest font-thin my-4;
             }
 
             .item__price {

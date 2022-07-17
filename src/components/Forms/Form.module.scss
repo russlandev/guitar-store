@@ -1,0 +1,16 @@
+.form__wrapper {
+    @apply flex flex-col items-center min-h-screen pt-20 text-neutral-300;
+    input {
+        @apply my-4 mt-2 px-3 py-2 h-14 bg-stone-800 focus:outline-none focus:bg-stone-900 w-4/6 md:w-1/2 lg:w-2/6;
+    }
+    button {
+        @apply select-none uppercase whitespace-nowrap bg-green-700 bg-opacity-70 w-56 px-8 md:h-16 lg:w-64 h-10 text-base tracking-widest font-thin hover:bg-opacity-100 my-10;
+    }
+    .form__pass_status {
+        @apply h-8;
+    }
+
+    .form__link {
+        @apply mt-10 text-center hover:underline;
+    }
+}

@@ -1,5 +1,5 @@
 .form__wrapper {
-    @apply flex flex-col items-center min-h-screen pt-20 text-neutral-300;
+    @apply flex flex-col items-center min-h-screen pt-20 text-neutral-300 mx-5 text-center mb-5;
     input {
         @apply my-4 mt-2 px-3 py-2 h-14 bg-stone-800 focus:outline-none focus:bg-stone-900 w-4/6 md:w-1/2 lg:w-2/6;
     }
@@ -12,5 +12,9 @@
 
     .form__link {
         @apply mt-10 text-center hover:underline;
+    }
+
+    .form__text {
+        @apply mb-7 text-xl;
     }
 }

@@ -23,7 +23,6 @@ const ItemCard = ({guitar}) => {
             <div className={styles.item__tocart}>
                 <div>${guitar.price}</div>
                 <ToCartButton item={guitar}/>
-                {/* <button>{guitar.inStock ? 'TO CART' : 'PRE-ORDER'}</button> */}
             </div>
         </div>
     );

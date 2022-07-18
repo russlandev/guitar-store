@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux/es/exports";
-import { addItemToCart } from "../../redux/reducers/cartSlice";
 import Slider from "../HelperComponents/Slider";
 import ToCartButton from "../HelperComponents/ToCartButton";
 import styles from "./ItemPage.module.scss";
 
 const ItemPage = () => {
-    const cart = useSelector((store) => store.cart.cartItems);
     const [item, setItem] = useState();
     const { category, id } = useParams();
-    const dispatch = useDispatch();
 
     const getItem = async () => {
         const response = await axios.get(

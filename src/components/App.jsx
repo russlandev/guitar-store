@@ -8,6 +8,7 @@ import FormLogin from "./Forms/FormLogin";
 import FormRegister from "./Forms/FormRegister";
 import RequireAuth from "../hoc/RequireAuth";
 import UserAccount from "./UserAccount/UserAccount";
+import Checkout from "./Checkout/Checkout";
 
 import Layout from "./Layout";
 
@@ -18,6 +19,7 @@ const App = () => {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage/>}/>
                     <Route path='cart' element={<Cart/>}/>
+                    <Route path='checkout' element={<Checkout/>}/>
                     <Route path='user-account' element={<RequireAuth><UserAccount/></RequireAuth>}/>
                     <Route path='sign-in' element={<FormLogin title='Sign-In' handleSubmit={()=>console.log('sign-in')}/>}/>
                     <Route path='register' element={<FormRegister title='Register' handleSubmit={()=>console.log('Register')}/>}/>

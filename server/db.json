@@ -1091,13 +1091,84 @@
     },
     {
       "email": "user@gmail.com",
-      "password": "user",
+      "password": "useruser",
       "id": "user"
+    }
+  ],
+  "orders": [
+    {
+      "user": {
+        "name": "admin",
+        "email": "admin@gmail.com",
+        "tel": "+123546978",
+        "country": "DFghjkl,   FYVGBHjnk",
+        "adress": "gvgubhu",
+        "zip": "66978"
+      },
+      "order": {
+        "cartItems": [
+          {
+            "amount": 1,
+            "item": {
+              "id": "BODEN ORIGINAL NX 6 CHARCOAL BLACK",
+              "price": "2,295.00",
+              "img": "https://strandbergguitars.com/cdn-cgi/image/onerror=redirect,quality=85,format=auto,metadata=copyright,width=1066,height=1600,fit=cover/wp-content/uploads/2021/09/bd6ct-21o-m-f-bk_6.png",
+              "category": "guitars",
+              "name": "BODEN ORIGINAL NX 6 CHARCOAL BLACK"
+            }
+          },
+          {
+            "amount": 3,
+            "item": {
+              "id": "BODEN STANDARD NX 6 TREMOLO RED",
+              "price": "1,745.00",
+              "img": "https://strandbergguitars.com/cdn-cgi/image/onerror=redirect,quality=85,format=auto,metadata=copyright,width=1066,height=1600,fit=cover/wp-content/uploads/2022/04/bd6tct-21s-m-f-rd_6.png",
+              "category": "guitars",
+              "name": "BODEN STANDARD NX 6 TREMOLO RED"
+            }
+          },
+          {
+            "amount": 1,
+            "item": {
+              "id": "BODEN METAL NX 6 BLACK GRANITE",
+              "price": "2,950.00",
+              "img": "https://strandbergguitars.com/cdn-cgi/image/onerror=redirect,quality=85,format=auto,metadata=copyright,width=1066,height=1600,fit=cover/wp-content/uploads/2021/09/bd6ct-21m-l-m-bk_6.png",
+              "category": "guitars",
+              "name": "BODEN METAL NX 6 BLACK GRANITE"
+            }
+          }
+        ],
+        "totalPrice": "10,480.00"
+      },
+      "status": "processing",
+      "id": 1
     },
     {
-      "email": "",
-      "password": "",
-      "id": "jIn_RUH"
+      "user": {
+        "name": "Admin",
+        "email": "admin@gmail.com",
+        "tel": "45678",
+        "country": "fgubio",
+        "adress": "cfygvubhi",
+        "zip": "8465"
+      },
+      "order": {
+        "cartItems": [
+          {
+            "amount": 1,
+            "item": {
+              "id": "BODEN BASS PROG 4 BROWN",
+              "price": "3,095.00",
+              "img": "https://strandbergguitars.com/cdn-cgi/image/onerror=redirect,quality=85,format=auto,metadata=copyright,width=1066,height=1600,fit=cover/wp-content/uploads/2018/12/bb4ct-19p-e-f-br_a.png",
+              "category": "basses",
+              "name": "BODEN BASS PROG 4 BROWN"
+            }
+          }
+        ],
+        "totalPrice": "3,095.00"
+      },
+      "status": "processing",
+      "id": 2
     }
   ]
 }

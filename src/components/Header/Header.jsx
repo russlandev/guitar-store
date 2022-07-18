@@ -20,7 +20,7 @@ const Header = () => {
             dispatch(login(JSON.parse(sessionStorage.getItem("user"))));
         }
         // Taking cart from localStorage if we have it
-        if (JSON.parse(localStorage.getItem("cart")).length) {
+        if (JSON.parse(localStorage.getItem("cart"))) {
             dispatch(
                 getCartFromLocalStorage({
                     cart: JSON.parse(localStorage.getItem("cart")),
@@ -34,7 +34,7 @@ const Header = () => {
     }, [location.pathname]);
 
     return (
-        <header className="mb-20">
+        <header className="mb-[59px]">
             <div className="fixed top-0 w-full z-50">
                 <div className={styles.header}>
                     <div className={styles.wrapper}>
@@ -136,10 +136,10 @@ const Header = () => {
                     </NavLink>
                     <NavLink
                         onClick={() => setOpen(!open)}
-                        to="sign-in"
+                        to="user-account"
                         className={styles.menu__item}
                     >
-                        <div>SIGN IN</div>
+                        <div>{user.id ? "MY ACCOUNT" : "SIGN IN"}</div>
                     </NavLink>
                 </div>
             </div>

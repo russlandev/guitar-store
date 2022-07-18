@@ -7,7 +7,7 @@ import {
 } from "../../redux/reducers/itemListSlice";
 import styles from "./FiltersBar.module.scss";
 
-const FiltersBar = ({category}) => {
+const FiltersBar = ({ category }) => {
     const [str, setStr] = useState([]);
     const [inStock, setInStock] = useState(false);
     const [lowerFirst, setLowerFirst] = useState(false);
@@ -15,7 +15,7 @@ const FiltersBar = ({category}) => {
 
     const dispatch = useDispatch();
 
-    // stringFilter hardcoded params 
+    // stringFilter hardcoded params
     const filterParams = (category) => {
         switch (category) {
             case "guitars":
@@ -48,7 +48,8 @@ const FiltersBar = ({category}) => {
     useEffect(() => {
         dispatch(stringsFilter({ str }));
         if (inStock) dispatch(inStockFilter());
-        dispatch(priceSort({ lowerFirst, higherFirst }));
+        if (lowerFirst || higherFirst)
+            dispatch(priceSort({ lowerFirst, higherFirst }));
     }, [str, inStock, lowerFirst, higherFirst]);
 
     return (

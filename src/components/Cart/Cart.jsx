@@ -1,32 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.scss";
-import { amountChange, removeItemFromCart } from "../../redux/reducers/cartSlice";
+import {
+    amountChange,
+    removeItemFromCart,
+} from "../../redux/reducers/cartSlice";
 
 const Cart = () => {
-    const cart = useSelector((store) => store.cart.cartItems);
+    const cart = useSelector((store) => store.cart);
+    
     const dispatch = useDispatch();
-
-    const calculateTotalPrice = () => {
-        let totalPrice = 0;
-        cart.forEach((item) => {
-            for (let i = 1; i <= item.amount; i++) {
-                totalPrice += parseInt(
-                    item.item.price.replace(/[\s.,%]/g, "").slice(0, -2)
-                );
-            }
-        });
-        const totalPriceString = `${totalPrice
-            .toString()
-            .slice(0, -3)},${totalPrice.toString().slice(-3)}.00`;
-        return totalPriceString;
-    };
 
     return (
         <div className={styles.cart__wrapper}>
-            {cart.length ? (
-                cart.map((item) => (
+            {cart.cartItems.length ? (
+                cart.cartItems.map((item) => (
                     <div className={styles.cart__item} key={item.item.id}>
                         <div className={styles.item__details}>
                             <Link
@@ -42,7 +31,7 @@ const Cart = () => {
                                     {item.item.name}
                                 </Link>
                                 <div className={styles.item__price}>
-                                    {item.item.price}
+                                    ${item.item.price}
                                 </div>
                             </div>
                         </div>
@@ -52,7 +41,7 @@ const Cart = () => {
                                     onClick={() =>
                                         dispatch(
                                             amountChange({
-                                                param: true,
+                                                boolean: true,
                                                 id: item.item.id,
                                             })
                                         )
@@ -90,13 +79,15 @@ const Cart = () => {
             )}
             <div className={styles.cart__checkout}>
                 <div className={styles.cart__total}>
-                    Total: ${calculateTotalPrice()}
+                    Total: ${cart.totalPrice}
                 </div>
-                {cart.length ? (
-                    <button className={styles.cart__button}>
-                        Checkout{" "}
-                        <i className="long arrow alternate right icon"></i>
-                    </button>
+                {cart.cartItems.length ? (
+                    <Link to='/checkout'>
+                        <button className={styles.cart__button}>
+                            Checkout
+                            <i className="long arrow alternate right icon"/>
+                        </button>
+                    </Link>
                 ) : null}
             </div>
         </div>

@@ -20,8 +20,11 @@ const FormLogin = ({ title }) => {
     const handleSubmit = (e, email, password) => {
         e.preventDefault();
         remember
-            ? localStorage.setItem("user", JSON.stringify({email, password}))
-            : sessionStorage.setItem("user", JSON.stringify({email, password}));
+            ? localStorage.setItem("user", JSON.stringify({ email, password }))
+            : sessionStorage.setItem(
+                  "user",
+                  JSON.stringify({ email, password })
+              );
 
         dispatch(login({ email, password }));
         setEmail("");
@@ -33,6 +36,9 @@ const FormLogin = ({ title }) => {
             onSubmit={(e) => handleSubmit(e, email, password)}
             className={styles.form__wrapper}
         >
+            <div className={styles.form__text}>
+                Sign-in or register to watch your order status
+            </div>
             <input
                 type="email"
                 value={email}

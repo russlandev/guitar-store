@@ -1,5 +1,5 @@
 .cart__wrapper {
-    @apply mx-2 sm:mx-5 md:mx-10 lg:mx-20 min-h-screen;
+    @apply mx-2 sm:mx-5 md:mx-10 lg:mx-20 min-h-screen pt-3;
 
     .cart__empty {
         @apply uppercase text-center text-base sm:text-xl md:text-2xl tracking-widest font-thin text-stone-300 my-4;

@@ -1169,6 +1169,33 @@
       },
       "status": "processing",
       "id": 2
+    },
+    {
+      "user": {
+        "name": "sad",
+        "email": "uagsj@efb.asd",
+        "tel": "hwiwge",
+        "country": "qiebhf",
+        "adress": "ihbw",
+        "zip": "645"
+      },
+      "order": {
+        "cartItems": [
+          {
+            "amount": 1,
+            "item": {
+              "id": "BODEN METAL NX 8 SARAH LONGFIELD EDITION",
+              "price": "2,695.00",
+              "img": "https://strandbergguitars.com/cdn-cgi/image/onerror=redirect,quality=85,format=auto,metadata=copyright,width=1066,height=1600,fit=cover/wp-content/uploads/2022/02/bd8ct-21a-l-m-dc_6.png",
+              "category": "guitars",
+              "name": "BODEN METAL NX 8 SARAH LONGFIELD EDITION"
+            }
+          }
+        ],
+        "totalPrice": "2,695.00"
+      },
+      "status": "processing",
+      "id": 3
     }
   ]
 }

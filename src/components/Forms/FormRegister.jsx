@@ -30,6 +30,10 @@ const FormRegister = ({ title }) => {
         }
     };
 
+    // const handleChangeData = (e) => {
+    //     setЧто-то(e.targer.value)
+    // }
+
     return (
         <form
             onSubmit={(e) => handleSubmit(e, email, password, id)}
@@ -40,6 +44,7 @@ const FormRegister = ({ title }) => {
                 type="id"
                 value={id}
                 onChange={(e) => setId(e.target.value)}
+                // хендлер вместо анонимной функици
                 placeholder="Username"
             ></input>
             <input

@@ -31,6 +31,10 @@ const FormLogin = ({ title }) => {
         setPassword("");
     };
 
+    // const handleChangeEmail = (e) => {
+    //     setEmail(e.target.value)
+    // }
+
     return (
         <form
             onSubmit={(e) => handleSubmit(e, email, password)}
@@ -43,6 +47,7 @@ const FormLogin = ({ title }) => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                // вместо таких анонимных функций обычно делают хендлеры как я написал выше в handleChangeEmail
                 placeholder="Email"
             ></input>
             <input

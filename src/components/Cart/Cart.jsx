@@ -7,6 +7,8 @@ import {
     removeItemFromCart,
 } from "../../redux/reducers/cartSlice";
 
+
+
 const Cart = () => {
     const cart = useSelector((store) => store.cart);
     

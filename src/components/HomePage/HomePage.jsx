@@ -8,6 +8,7 @@ const homeSliderImages = [
 ];
 
 const HomePage = () => {
+    // тут можно без ретерн
     return (
         <div className="flex justify-center">
             <Slider images={homeSliderImages} sliderWidth={window.screen.width} />

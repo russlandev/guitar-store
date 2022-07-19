@@ -16,6 +16,7 @@ const UserAccount = () => {
         );
         setState(response.data);
     };
+    // это можно сразу в юзэффект записать
 
     useEffect(() => {
         getOrders(user.email, setOrders);

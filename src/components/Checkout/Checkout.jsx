@@ -49,6 +49,7 @@ const Checkout = () => {
                     <input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        //хендлеры, и вообще можно замапить всю эту залупу и сделать компонент инпута кастомный уже с тайтлом
                         type="text"
                     />{" "}
                     <div>Email</div>

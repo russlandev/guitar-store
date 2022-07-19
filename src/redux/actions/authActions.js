@@ -5,6 +5,7 @@ export const login = createAsyncThunk(
     "user/login",
     async function ({ email, password }, { rejectWithValue }) {
         if (email === "")
+            // а если он будет undefined ?
             return rejectWithValue("Please enter all required data");
         try {
             const response = await axios.get(
@@ -28,6 +29,7 @@ export const register = createAsyncThunk(
     "user/register",
     async function ({ email, password, id }, { rejectWithValue }) {
         if (email === "" || id === "")
+            // а если он будет undefined ?
             return rejectWithValue("Please enter all required data");
         if (password.length < 6)
             return rejectWithValue("Password must be longer then 6 symbols");

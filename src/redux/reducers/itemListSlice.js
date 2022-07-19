@@ -30,6 +30,7 @@ const itemListSlice = createSlice({
                     (a, b) =>
                         parseInt(a.price.replace(/[\s.,%]/g, "").slice(0, -2)) -
                         parseInt(b.price.replace(/[\s.,%]/g, "").slice(0, -2))
+                        //эту функцию надо в хелперы вынести, ты часто её используешь
                 );
             }
             if (action.payload.higherFirst) {

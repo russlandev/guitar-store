@@ -46,6 +46,7 @@ const cartSlice = createSlice({
                 ].amount++;
             } else {
                 if (
+                    // это можно просто во второй иф без ифа в елс
                     state.cartItems[
                         state.cartItems.findIndex(
                             (item) => item.item.id === action.payload.id

@@ -15,7 +15,7 @@ const ItemPage = () => {
         );
         setItem(response.data.find((item) => item.id === id));
     };
-
+// это можно сразу в юзэффекте написать 
 
     useEffect(() => {
         getItem();

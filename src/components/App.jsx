@@ -15,6 +15,7 @@ import Layout from "./Layout";
 const App = () => {
     return (
         <React.Fragment>
+            {/* фрагмент можно удалить */}
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage/>}/>
@@ -26,6 +27,7 @@ const App = () => {
                     <Route path='list/:category' element={<ItemList />} />
                     <Route path='list/:category/:tag' element={<ItemList />} />
                     <Route path='list/:category/item/:id' element={<ItemPage/>} />
+                    {/* для всей этой шляпы лучше создать массив routes и мапить его тут */}
                 </Route>
             </Routes>
         </React.Fragment>
@@ -33,3 +35,6 @@ const App = () => {
 };
 
 export default App;
+
+
+//чо апп тсх в компонентах, он обычно в корне лежит

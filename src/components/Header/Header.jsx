@@ -9,6 +9,7 @@ const Header = () => {
     const [open, setOpen] = useState(false);
     const cart = useSelector((store) => store.cart.cartItems);
     const user = useSelector((store) => store.user);
+    // это можно написать как const {cart, user} = useSelector((store) => store) и для карта потом достать cartItems
     const dispatch = useDispatch();
     const location = useLocation();
 
@@ -32,6 +33,8 @@ const Header = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location.pathname]);
+    //засунь это в app.tsx
+    
 
     return (
         <header className="mb-[59px]">

@@ -18,6 +18,7 @@ const ToCartButton = ({ item }) => {
                         category: item.category,
                         name: item.name,
                     })
+                    // тут можно просто отдавать айдишник а в редюсере уже искать элемент и сувать все его данные куда надо
                 )
             }
         >

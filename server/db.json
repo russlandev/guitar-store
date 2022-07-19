@@ -1088,6 +1088,11 @@
       "email": "admin@gmail.com",
       "password": "admin",
       "id": "admin"
+    },
+    {
+      "email": "user@mail.ru",
+      "password": "123456",
+      "id": "user"
     }
   ],
   "orders": [

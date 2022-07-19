@@ -10,15 +10,13 @@ const UserAccount = () => {
     const dispatch = useDispatch();
     const [orders, setOrders] = useState([]);
 
-    const getOrders = async (email, setState) => {
-        const response = await axios.get(
-            `http://localhost:3001/orders?q=${email}`
-        );
-        setState(response.data);
-    };
-
     useEffect(() => {
-        getOrders(user.email, setOrders);
+        (async () => {
+            const response = await axios.get(
+                `http://localhost:3001/orders?q=${user.email}`
+            );
+            setOrders(response.data);
+        })();
     }, [user.email]);
 
     return (

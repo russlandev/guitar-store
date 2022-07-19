@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login } from "../actions/authActions";
+import { registerNewUser, login } from "../actions/authActions";
 
 const userSlice = createSlice({
     name: "user",
@@ -25,15 +25,15 @@ const userSlice = createSlice({
         [login.rejected]: (state, action) => {
             state.err = action.payload;
         },
-        [register.pending]: (state, action) => {
+        [registerNewUser.pending]: (state, action) => {
             state.err = null;
         },
-        [register.fulfilled]: (state, action) => {
+        [registerNewUser.fulfilled]: (state, action) => {
             state.email = action.payload.email;
             state.id = action.payload.id;
             state.err = null;
         },
-        [register.rejected]: (state, action) => {
+        [registerNewUser.rejected]: (state, action) => {
             state.err = action.payload;
         },
     },

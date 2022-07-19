@@ -3,9 +3,7 @@ import axios from "axios";
 
 export const login = createAsyncThunk(
     "user/login",
-    async function ({ email, password }, { rejectWithValue }) {
-        if (email === "")
-            return rejectWithValue("Please enter all required data");
+    async function ({ email, password, remember }, { rejectWithValue }) {
         try {
             const response = await axios.get(
                 `http://localhost:3001/users?email=${email}`
@@ -16,19 +14,23 @@ export const login = createAsyncThunk(
             );
 
             if (user && user.password === password) {
+                remember
+                ? localStorage.setItem("user", JSON.stringify({email, password}))
+                : sessionStorage.setItem("user", JSON.stringify({email, password}));
                 return user;
-            } else return rejectWithValue("Incorrect login or password");
+            } else {
+                return rejectWithValue("Incorrect login or password");
+    
+            }
         } catch (err) {
             return rejectWithValue(`Network error: ${err.message}`);
         }
     }
 );
 
-export const register = createAsyncThunk(
-    "user/register",
-    async function ({ email, password, id }, { rejectWithValue }) {
-        if (email === "" || id === "")
-            return rejectWithValue("Please enter all required data");
+export const registerNewUser = createAsyncThunk(
+    "user/registerNewUser",
+    async function ({ email, password, id , remember}, { rejectWithValue }) {
         if (password.length < 6)
             return rejectWithValue("Password must be longer then 6 symbols");
         try {
@@ -49,6 +51,10 @@ export const register = createAsyncThunk(
             }
 
             axios.post(`http://localhost:3001/users`, { email, password, id });
+
+            remember
+            ? localStorage.setItem("user", JSON.stringify({email, password}))
+            : sessionStorage.setItem("user", JSON.stringify({email, password}));
 
             return { email, id };
         } catch (err) {

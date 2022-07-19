@@ -1,68 +1,70 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { useLocation, Navigate, Link } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { login } from "../../redux/actions/authActions";
+import { useForm } from "react-hook-form";
 import Error from "../HelperComponents/Error";
 import styles from "./Form.module.scss";
 
-const FormLogin = ({ title }) => {
-    const location = useLocation();
+const FormLogin = () => {
     const user = useSelector((store) => store.user);
-    const [remember, setRemember] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const dispatch = useDispatch();
 
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        reset,
+    } = useForm({ mode: "onBlur" });
+
     if (user.email) {
-        return <Navigate to="/user-account" state={{ from: location }} />;
+        return <Navigate to="/user-account" replace={true} />;
     }
 
-    const handleSubmit = (e, email, password) => {
-        e.preventDefault();
-        remember
-            ? localStorage.setItem("user", JSON.stringify({ email, password }))
-            : sessionStorage.setItem(
-                  "user",
-                  JSON.stringify({ email, password })
-              );
-
-        dispatch(login({ email, password }));
-        setEmail("");
-        setPassword("");
+    const onSubmit = (data) => {
+        dispatch(login(data));
+        reset();
     };
 
     return (
         <form
-            onSubmit={(e) => handleSubmit(e, email, password)}
+            autoComplete="off"
+            onSubmit={handleSubmit(onSubmit)}
             className={styles.form__wrapper}
         >
             <div className={styles.form__text}>
                 Sign-in or register to watch your order status
             </div>
+
             <input
+                {...register("email", { required: "This field is required" })}
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-            ></input>
+                placeholder={
+                    errors?.email?.message
+                        ? `Email: ${errors.email.message}`
+                        : "Email"
+                }
+            />
             <input
+                {...register("password", {
+                    required: "This field is required",
+                })}
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-            ></input>
-            {user.err && <Error error={user.err} />}
-            <button onClick={(e) => handleSubmit(e, email, password)}>
-                {title}
-            </button>
+                placeholder={
+                    errors?.password?.message
+                        ? `Password: ${errors.password.message}`
+                        : "Password"
+                }
+            />
             <div className="ui checkbox">
                 <input
+                    {...register("remember")}
                     type="checkbox"
-                    value={remember}
-                    onChange={() => setRemember(!remember)}
                 />
                 <label className="!text-stone-300">Remember me</label>
             </div>
+            {user.err && <Error error={user.err} />}
+            <button type="submit">Login</button>
             <Link className={styles.form__link} to="/register">
                 Don't have an account?
                 <br /> Register

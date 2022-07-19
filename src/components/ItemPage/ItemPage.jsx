@@ -9,16 +9,13 @@ const ItemPage = () => {
     const [item, setItem] = useState();
     const { category, id } = useParams();
 
-    const getItem = async () => {
-        const response = await axios.get(
-            `http://localhost:3001/items?id=${id}`
-        );
-        setItem(response.data.find((item) => item.id === id));
-    };
-
-
     useEffect(() => {
-        getItem();
+        (async () => {
+            const response = await axios.get(
+                `http://localhost:3001/items?id=${id}`
+            );
+            setItem(response.data.find((item) => item.id === id));
+        })();
     }, [id]);
 
     return (

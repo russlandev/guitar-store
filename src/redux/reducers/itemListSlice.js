@@ -1,13 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getData, tagSearch } from "../actions/getDataActions";
 
+const parsePrice = (price) => {
+    return parseInt(price.replace(/[\s.,%]/g, "").slice(0, -2));
+};
+
 const itemListSlice = createSlice({
     name: "itemList",
     initialState: {
         fetchedItems: [],
         itemsToRender: [],
         isLodaing: false,
-        err: null
+        err: null,
     },
     reducers: {
         stringsFilter(state, action) {
@@ -27,57 +31,50 @@ const itemListSlice = createSlice({
         priceSort(state, action) {
             if (action.payload.lowerFirst) {
                 state.itemsToRender.sort(
-                    (a, b) =>
-                        parseInt(a.price.replace(/[\s.,%]/g, "").slice(0, -2)) -
-                        parseInt(b.price.replace(/[\s.,%]/g, "").slice(0, -2))
+                    (a, b) => parsePrice(a.price) - parsePrice(b.price)
                 );
             }
             if (action.payload.higherFirst) {
                 state.itemsToRender.sort(
-                    (a, b) =>
-                        parseInt(b.price.replace(/[\s.,%]/g, "").slice(0, -2)) -
-                        parseInt(a.price.replace(/[\s.,%]/g, "").slice(0, -2))
+                    (a, b) => parsePrice(b.price) - parsePrice(a.price)
                 );
             }
         },
     },
     extraReducers: {
-        [getData.pending] : (state) => {
+        [getData.pending]: (state) => {
             state.err = null;
             state.isLodaing = true;
         },
-        [getData.fulfilled] : (state, action) => {
+        [getData.fulfilled]: (state, action) => {
             state.fetchedItems = action.payload;
             state.itemsToRender = action.payload;
             state.err = null;
             state.isLodaing = false;
         },
-        [getData.rejected] : (state, action) => {
+        [getData.rejected]: (state, action) => {
             state.err = action.payload;
             state.fetchedItems = [];
             state.itemsToRender = [];
             state.isLodaing = false;
-
         },
-        [tagSearch.pending] : (state) => {
+        [tagSearch.pending]: (state) => {
             state.err = null;
             state.isLodaing = true;
         },
-        [tagSearch.fulfilled] : (state, action) => {
+        [tagSearch.fulfilled]: (state, action) => {
             state.fetchedItems = action.payload;
             state.itemsToRender = action.payload;
             state.err = null;
             state.isLodaing = false;
-
         },
-        [tagSearch.rejected] : (state, action) => {
+        [tagSearch.rejected]: (state, action) => {
             state.err = action.payload;
             state.fetchedItems = [];
             state.itemsToRender = [];
             state.isLodaing = false;
         },
-
-    }
+    },
 });
 
 export const { stringsFilter, inStockFilter, priceSort } =

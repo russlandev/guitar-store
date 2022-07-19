@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import { clearCart } from "../../redux/reducers/cartSlice";
 import styles from "./Checkout.module.scss";
@@ -15,19 +16,18 @@ const Checkout = () => {
     const [err, setErr] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    // controlled inputs
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState(user.email ? user.email : "");
-    const [tel, setTel] = useState("");
-    const [country, setCountry] = useState("");
-    const [adress, setAdress] = useState("");
-    const [zip, setZip] = useState("");
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        reset,
+    } = useForm({ mode: "onBlur" });
 
-    const handleSubmit = async () => {
+    const onSubmit = async (data) => {
         setLoading(true);
         try {
             await axios.post(`http://localhost:3001/orders`, {
-                user: { name, email, tel, country, adress, zip },
+                user: data,
                 order: cart,
                 status: "processing",
             });
@@ -38,48 +38,96 @@ const Checkout = () => {
             setErr(err.message);
             setLoading(false);
         }
+        reset();
     };
 
     return (
         <>
-            <div className={styles.checkout__wrapper}>
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                className={styles.checkout__wrapper}
+            >
                 <div className={styles.checkout__delivery_data}>
                     <div className={styles.checkout__text}>Delivery info</div>
-                    <div>Full Name</div>
+                    <label>
+                        Full Name{" "}
+                        <span className="text-red-700">
+                            {errors?.name?.message}
+                        </span>
+                    </label>
                     <input
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        type="text"
-                    />{" "}
-                    <div>Email</div>
-                    <input
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        type="email"
+                        {...register("name", {
+                            required: "This field is required",
+                        })}
                     />
-                    <div>Phone Number</div>
+
+                    <label>
+                        Email{" "}
+                        <span className="text-red-700">
+                            {errors?.email?.message}
+                        </span>
+                    </label>
                     <input
-                        value={tel}
-                        onChange={(e) => setTel(e.target.value)}
-                        type="tel"
+                        {...register("email", {
+                            required: "This field is required",
+                            pattern: {
+                                value: /@/,
+                                message: "Plese enter valid email adress",
+                            },
+                            value: user.email || "",
+                        })}
                     />
-                    <div>Country, City</div>
+                    <label>
+                        Phone number{" "}
+                        <span className="text-red-700">
+                            {errors?.tel?.message}
+                        </span>
+                    </label>
                     <input
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                        type="text"
+                        {...register("tel", {
+                            required: "This field is required",
+                            pattern: {
+                                value: /^([+]?[0-9\s-\(\)]{3,25})*$/i,
+                                message: "Plese enter valid phone number",
+                            },
+                        })}
                     />
-                    <div>Adress</div>
+                    <label>
+                        Country, City{" "}
+                        <span className="text-red-700">
+                            {errors?.country?.message}
+                        </span>
+                    </label>
                     <input
-                        value={adress}
-                        onChange={(e) => setAdress(e.target.value)}
-                        type="text"
+                        {...register("country", {
+                            required: "This field is required",
+                        })}
                     />
-                    <div>ZIP Postcode</div>
+                    <label>
+                        Adress{" "}
+                        <span className="text-red-700">
+                            {errors?.adress?.message}
+                        </span>
+                    </label>
                     <input
-                        value={zip}
-                        onChange={(e) => setZip(e.target.value)}
-                        type="number"
+                        {...register("adress", {
+                            required: "This field is required",
+                        })}
+                    />
+                    <label>
+                        ZIP / Postcode{" "}
+                        <span className="text-red-700">
+                            {errors?.zip?.message}
+                        </span>
+                    </label>
+                    <input
+                        {...register("zip", {
+                            required: "This field is required",
+                            pattern: {
+                                value: /^\d{5}$/,
+                                message: "Should include 5 symbols",
+                            },
+                        })}
                     />
                 </div>
                 <div className={styles.checkout__cart}>
@@ -112,23 +160,12 @@ const Checkout = () => {
                     {err ? (
                         <Error error={err} />
                     ) : (
-                        <button
-                            disabled={
-                                !(email && tel && country && adress && zip)
-                            }
-                            onClick={handleSubmit}
-                        >
-                            {loading ? (
-                                <Loader />
-                            ) : email && tel && country && adress && zip ? (
-                                "Place an order"
-                            ) : (
-                                "Enter all data"
-                            )}
+                        <button type="submit">
+                            {loading ? <Loader /> : "Place an order"}
                         </button>
                     )}
                 </div>
-            </div>
+            </form>
         </>
     );
 };

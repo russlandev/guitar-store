@@ -1085,14 +1085,9 @@
   ],
   "users": [
     {
-      "id": "admin",
       "email": "admin@gmail.com",
-      "password": "admin"
-    },
-    {
-      "email": "user@gmail.com",
-      "password": "useruser",
-      "id": "user"
+      "password": "admin",
+      "id": "admin"
     }
   ],
   "orders": [
@@ -1172,12 +1167,12 @@
     },
     {
       "user": {
-        "name": "sad",
-        "email": "uagsj@efb.asd",
-        "tel": "hwiwge",
-        "country": "qiebhf",
-        "adress": "ihbw",
-        "zip": "645"
+        "name": "adminadmin",
+        "email": "admin@gmail.com",
+        "tel": "132456897",
+        "country": "Adsasdsa",
+        "adress": "ASdasdasdasa",
+        "zip": "12345"
       },
       "order": {
         "cartItems": [

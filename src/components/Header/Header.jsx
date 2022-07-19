@@ -14,10 +14,10 @@ const Header = () => {
 
     useEffect(() => {
         // Signing-in user if he clicked 'remember me' or refreshed the page during one session
-        if (JSON.parse(localStorage.getItem("user"))) {
-            dispatch(login(JSON.parse(localStorage.getItem("user"))));
-        } else if (JSON.parse(sessionStorage.getItem("user"))) {
+        if (JSON.parse(sessionStorage.getItem("user"))) {
             dispatch(login(JSON.parse(sessionStorage.getItem("user"))));
+        } else if (JSON.parse(localStorage.getItem("user"))) {
+            dispatch(login(JSON.parse(localStorage.getItem("user"))));
         }
         // Taking cart from localStorage if we have it
         if (JSON.parse(localStorage.getItem("cart"))) {
